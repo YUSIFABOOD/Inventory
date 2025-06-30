@@ -40,4 +40,34 @@ public:
     ~UserManager();
 };
 
+class Item {
+private:
+    QString name;
+    QString category;
+    int quantity;
+    double price;
+    QString supplier;
+
+public:
+    Item(const QString& n, const QString& cat, int qty, double pr, const QString& supp);
+    QString getName() const;
+    QString getSupplier() const;
+    QString getPrice () const;
+    QString getQuantity () const;
+};
+
+class Inventory {
+private:
+    QVector<Item> items;
+
+public:
+    void addItem(const Item& item);
+    void loadFromFile(const QString& filePath);
+    void saveToFile(const QString& filePath) const;
+
+    QVector<Item> searchByName(const QString& name) const; // for searching the items.
+    QVector<Item> searchByCategory(const QString& category) const;// mostly we will make it with radio buttons 
+    QVector<Item> searchBySupplier(const QString& supplier) const;// to determine which method we will use 
+};
+
 #endif // CORE_H
