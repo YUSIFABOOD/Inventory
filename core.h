@@ -2,6 +2,7 @@
 #define CORE_H
 
 #include <QString>
+#include <QVector>
 
 class user {
     private:
@@ -19,6 +20,24 @@ class user {
     virtual bool canManageUsers() const = 0;
     virtual bool canAddItems() const = 0;
     virtual bool canGenerateReports() const = 0;
+};
+
+class Authenticator {
+public:
+    static User* login(const QString& username, const QString& password, const QVector<User*>& users);
+};
+
+class UserManager {
+private:
+    QVector<User*> users;
+
+public:
+    void loadUsers(const QString& filename);
+    void saveUsers(const QString& filename) const;
+    void addUser(User* user);
+    void deleteUser(const QString& username);
+    User* findUser(const QString& username) const;
+    ~UserManager();
 };
 
 #endif // CORE_H
