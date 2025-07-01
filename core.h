@@ -2,7 +2,6 @@
 #define CORE_H
 
 #include <QString>
-#include <QVector>
 
 class user {
     private:
@@ -57,17 +56,18 @@ public:
 };
 
 class Inventory {
-private:
-    QVector<Item> items;
 
 public:
     void addItem(const Item& item);
     void loadFromFile(const QString& filePath);
     void saveToFile(const QString& filePath) const;
+//search functions
+};
 
-    QVector<Item> searchByName(const QString& name) const; // for searching the items.
-    QVector<Item> searchByCategory(const QString& category) const;// mostly we will make it with radio buttons 
-    QVector<Item> searchBySupplier(const QString& supplier) const;// to determine which method we will use 
+class ReportGenerator {
+    public:
+    //functions to generate a report. A report contains summary of all items in the inventory, and low-stock items.
+    static void generatorReport(const Inventory& inventory, const Qstring& filename);
 };
 
 #endif // CORE_H
