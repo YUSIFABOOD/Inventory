@@ -23,13 +23,11 @@ class user {
 
 class Authenticator {
 public:
-    static User* login(const QString& username, const QString& password, const QVector<User*>& users);
+ //verification functions
 };
 
 class UserManager {
-private:
-    QVector<User*> users;
-
+//container for the users
 public:
     void loadUsers(const QString& filename);
     void saveUsers(const QString& filename) const;
@@ -59,7 +57,6 @@ class Inventory {
 
 public:
     void addItem(const Item& item);
-    void loadFromFile(const QString& filePath);
     void saveToFile(const QString& filePath) const;
 //search functions
 };
