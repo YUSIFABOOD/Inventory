@@ -18,3 +18,9 @@ void LoginPage::on_pushButton_clicked()
 
 }
 
+
+void LoginPage::on_LoginButton_clicked()
+{
+
+}
+
