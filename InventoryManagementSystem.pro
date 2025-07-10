@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     core.cpp \
+    dashboard.cpp \
     maestro.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,11 +18,13 @@ SOURCES += \
 
 HEADERS += \
     core.h \
+    dashboard.h \
     maestro.h \
     mainwindow.h \
     users.h
 
 FORMS += \
+    dashboard.ui \
     mainwindow.ui
 
 # Default rules for deployment.
