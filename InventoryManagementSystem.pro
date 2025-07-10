@@ -10,19 +10,19 @@ CONFIG += c++17
 
 SOURCES += \
     core.cpp \
+    loginpage.cpp \
     maestro.cpp \
     main.cpp \
-    mainwindow.cpp \
     users.cpp
 
 HEADERS += \
     core.h \
+    loginpage.h \
     maestro.h \
-    mainwindow.h \
     users.h
 
 FORMS += \
-    mainwindow.ui
+    loginpage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
