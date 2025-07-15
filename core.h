@@ -52,11 +52,23 @@ private:
     QString supplier;
 
 public:
-    Item(const QString& n, const QString& cat, int qty, double pr, const QString& supp);
-    QString getName() const;
-    QString getSupplier() const;
-    QString getPrice () const;
-    QString getQuantity () const;
+    Item(): name(""), category("") , quantity(0), price(0),supplier(""){};
+    Item(const QString& n, const QString& cat, int qty, double pr, const QString& supp) : name(n), category(cat), quantity(qty), price(pr), supplier(supp) {};
+    QString getName() const{return name;}
+    QString getSupplier() const{return supplier;}
+    QString getCategory ()const {return category;}
+    double getPrice () const{return price;}
+    int getQuantity () const{return quantity;}
+};
+
+class InventoryManager {
+public:
+    static void loadItems();
+    static void saveItems();
+    static QMap<QString, Item>& getInventory();
+
+private:
+    static QMap<QString, Item> inventoryMap;      // key = Item name
 };
 
 

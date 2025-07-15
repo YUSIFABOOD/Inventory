@@ -12,6 +12,8 @@
 using namespace std;
 
 QMap<QString, User> UserManager::usersByUsername;
+QMap<QString, Item> InventoryManager::inventoryMap;
+
 
 bool Authenticator::checkPass(QString name, QString pass, QMap<QString,User> map)
 {

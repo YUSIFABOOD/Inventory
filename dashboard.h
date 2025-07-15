@@ -22,6 +22,10 @@ protected:
 public:
     explicit Dashboard(QWidget *parent = nullptr);
     ~Dashboard();
+    void setUsername(const QString &username);
+    void updateInventoryStats();
+    QString currentUser;
+
 
 private slots:
     void on_InventoryButton_clicked();
@@ -29,6 +33,8 @@ private slots:
     void on_addItemButton_clicked();
 
     void on_reportsButton_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::Dashboard *ui;

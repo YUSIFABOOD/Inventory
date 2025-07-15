@@ -73,3 +73,65 @@ void UserManager::saveUsers()
     }
     File.close();
 }
+
+void InventoryManager::loadItems()
+{
+    QString path = "../../database/items.csv";
+    ifstream file(path.toStdString());
+    if (!file.is_open()) {
+        throw runtime_error("Inventory file does not exist");
+    }
+
+    string line;
+    inventoryMap.clear();
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string name, category, quantityStr, priceStr, supplier;
+
+        if (getline(ss, name, ',') &&
+            getline(ss, category, ',') &&
+            getline(ss, quantityStr, ',') &&
+            getline(ss, priceStr, ',') &&
+            getline(ss, supplier, ',')) {
+
+            inventoryMap[QString::fromStdString(name)] =
+                Item(
+                    QString::fromStdString(name),
+                    QString::fromStdString(category),
+                    stoi(quantityStr),
+                    stod(priceStr),
+                    QString::fromStdString(supplier)
+                    );
+        }
+    }
+
+    file.close();
+}
+
+
+
+void InventoryManager::saveItems()
+{
+    QString path = "../../database/items.csv";
+    ofstream file(path.toStdString());
+    if (!file.is_open()) {
+        throw runtime_error("Failed to open inventory file for writing");
+    }
+
+    for (auto it = inventoryMap.begin(); it != inventoryMap.end(); ++it)
+    {
+        file << it.value().getName().toStdString() << ","
+             << it.value().getCategory().toStdString() << ","
+             << it.value().getQuantity() << ","
+             << it.value().getPrice() << ","
+             << it.value().getSupplier().toStdString() << endl;
+    }
+
+    file.close();
+}
+
+
+QMap<QString, Item>& InventoryManager::getInventory() {
+    return inventoryMap;
+}

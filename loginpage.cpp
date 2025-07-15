@@ -34,6 +34,7 @@ void loginPage::on_loginButton_clicked()
         {
             hide();
             Dashboard* dashboard = new Dashboard(this);
+            dashboard->setUsername(name);
             dashboard->show();
         }
         else if(Authenticator::login(name, pass)=="Staff")

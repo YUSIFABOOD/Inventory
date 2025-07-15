@@ -6,6 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    InventoryManager::loadItems();
     QObject::connect(&a, &QApplication::aboutToQuit, &UserManager::saveUsers);
     UserManager manager;
     loginPage w;
