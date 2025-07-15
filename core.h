@@ -21,7 +21,7 @@ public:
 };
 
 class Authenticator {
-    QMap<QString, User> usersByUsername;
+    static QMap<QString, User> usersByUsername;
 public:
     Authenticator();
     static QString login (QString name, QString pass);
@@ -31,13 +31,16 @@ public:
 };
 
 class UserManager {
+    static QMap<QString, User> usersByUsername;
 public:
+    UserManager(){usersByUsername=loadUsers("../../database/users.csv");}
     static void deleteUser(const QString& username);
-    User* findUser(const QString& username) const;
-    static QMap<QString, User> loadUsers(const QString& data);
+    User* findUser(QMap<QString, User>&) const;
+    static QMap <QString, User> loadUsers(const QString& data);
     static void addUser(QString, QString, QString);
-    static void loadTableFromCSV(QTableWidget* table, const QString& filePath);
-    ~UserManager();
+    static void updateTable(QTableWidget* table);
+    static QMap <QString, User> getData();
+    static void saveUsers();
 };
 
 class Item {

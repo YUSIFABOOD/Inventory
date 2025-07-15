@@ -8,7 +8,7 @@ adminpage::adminpage(QWidget *parent)
     , ui(new Ui::adminpage)
 {
     ui->setupUi(this);
-    UserManager::loadTableFromCSV(ui->userTable, "../../database/users.csv");
+    UserManager::updateTable(ui->userTable);
 }
 
 adminpage::~adminpage()
@@ -25,12 +25,11 @@ void adminpage::on_addUserButton_clicked()
     QString role = ui->roleBox->currentText();
     try{
         UserManager::addUser(name,pass,role);
-        UserManager::loadTableFromCSV(ui->userTable, "../../database/users.csv");
+        UserManager::updateTable(ui->userTable);
         QMessageBox::information(this, "Done", "User added successfully");
     }
     catch (const std::runtime_error& e) {
         QMessageBox::critical(this, "Add user failed", e.what());}
-
 }
 
 

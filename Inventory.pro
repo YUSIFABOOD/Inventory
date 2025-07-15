@@ -13,6 +13,7 @@ SOURCES += \
     adminpage.cpp \
     core.cpp \
     dashboard.cpp \
+    dataHandling.cpp \
     inventory.cpp \
     main.cpp \
     loginpage.cpp \

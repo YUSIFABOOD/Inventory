@@ -2,7 +2,9 @@
 #define ADMINPAGE_H
 
 #include <QDialog>
-
+#include <QApplication>
+#include <QCloseEvent>
+#include "core.h"
 namespace Ui {
 class adminpage;
 }
@@ -10,7 +12,13 @@ class adminpage;
 class adminpage : public QDialog
 {
     Q_OBJECT
-
+protected:
+    void closeEvent(QCloseEvent *event) override {
+        qDebug() << "X button clicked - saving users";
+        UserManager::saveUsers();
+        event->accept();
+        QApplication::quit();  // This makes aboutToQuit work!
+    }
 public:
     explicit adminpage(QWidget *parent = nullptr);
     ~adminpage();

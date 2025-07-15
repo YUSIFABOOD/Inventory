@@ -2,7 +2,9 @@
 #define DASHBOARD_H
 
 #include <QDialog>
-
+#include <QApplication>
+#include <QCloseEvent>
+#include "core.h"
 namespace Ui {
 class Dashboard;
 }
@@ -10,7 +12,13 @@ class Dashboard;
 class Dashboard : public QDialog
 {
     Q_OBJECT
-
+protected:
+    void closeEvent(QCloseEvent *event) override {
+        qDebug() << "X button clicked - saving users";
+        UserManager::saveUsers();
+        event->accept();
+        QApplication::quit();  // This makes aboutToQuit work!
+    }
 public:
     explicit Dashboard(QWidget *parent = nullptr);
     ~Dashboard();
