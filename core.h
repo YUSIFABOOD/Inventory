@@ -59,6 +59,15 @@ public:
     QString getQuantity () const;
 };
 
+class InventoryManager {
+    static QMap<QString, Item> items;
+public:
+    InventoryManager(){loadItems("../../database/items.csv");}
+    static void loadItems(const QString&);
+    static void saveItems();
+    static QMap<QString, Item>& getInventory();
+    static void AddItem (QString& name, QString& quantity,   QString& price,   QString& supplier, QString& category );
+};
 
 
 
