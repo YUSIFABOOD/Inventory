@@ -17,16 +17,61 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Dashboard</string>
   </property>
-  <widget class="QLineEdit" name="user_name">
+  <widget class="QLabel" name="welcome_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>201</width>
-     <height>28</height>
+     <x>30</x>
+     <y>20</y>
+     <width>400</width>
+     <height>30</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Welcome, </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="totalItemsLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>80</y>
+     <width>300</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Total Items: 0</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lowStockLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>110</y>
+     <width>300</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Low Stock Items: 0</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lastUpdateLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>140</y>
+     <width>400</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Last Update: N/A</string>
    </property>
   </widget>
   <widget class="QPushButton" name="InventoryButton">
@@ -39,7 +84,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>inventory logs</string>
+    <string>Inventory Logs</string>
    </property>
   </widget>
   <widget class="QPushButton" name="addItemButton">
@@ -68,30 +113,18 @@
     <string>Generate Reports</string>
    </property>
   </widget>
-  <widget class="QTableWidget" name="inventoryTable">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>100</y>
-     <width>381</width>
-     <height>192</height>
+     <x>620</x>
+     <y>20</y>
+     <width>90</width>
+     <height>29</height>
     </rect>
    </property>
-   <column>
-    <property name="text">
-     <string>Total Items</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>low-stock alerts</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>recent updates</string>
-    </property>
-   </column>
+   <property name="text">
+    <string>back </string>
+   </property>
   </widget>
  </widget>
  <resources/>

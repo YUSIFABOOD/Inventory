@@ -16,12 +16,17 @@ protected:
     void closeEvent(QCloseEvent *event) override {
         qDebug() << "X button clicked - saving users";
         UserManager::saveUsers();
+        InventoryManager::saveItems();
         event->accept();
         QApplication::quit();  // This makes aboutToQuit work!
     }
 public:
     explicit Dashboard(QWidget *parent = nullptr);
     ~Dashboard();
+    void setUsername(const QString &username);
+    void updateInventoryStats();
+    QString currentUser;
+
 
 private slots:
     void on_InventoryButton_clicked();
@@ -29,6 +34,8 @@ private slots:
     void on_addItemButton_clicked();
 
     void on_reportsButton_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::Dashboard *ui;
