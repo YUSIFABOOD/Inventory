@@ -5,6 +5,9 @@
 #include <QApplication>
 #include <QCloseEvent>
 #include "core.h"
+#include "dashboard.h"
+#include "inventory.h"
+
 namespace Ui {
 class adminpage;
 }
@@ -31,6 +34,8 @@ private slots:
     void on_adminBack_clicked();
 
     void on_userDeleteButton_clicked();
+
+    void on_InventoryButton_clicked();
 
 private:
     Ui::adminpage *ui;

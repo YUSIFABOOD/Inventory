@@ -2,6 +2,8 @@
 #include "ui_adminpage.h"
 #include "core.h"
 #include "loginpage.h"
+#include "dashboard.h"
+#include "inventory.h"
 #include <QMessageBox>
 adminpage::adminpage(QWidget *parent)
     : QDialog(parent)
@@ -58,5 +60,12 @@ void adminpage::on_userDeleteButton_clicked()
         } catch (const std::exception& e) {
             QMessageBox::critical(this, "Error", e.what());
         }
+}
+
+
+void adminpage::on_InventoryButton_clicked()
+{
+    Inventory* inventory = new Inventory;
+    inventory->show();
 }
 
