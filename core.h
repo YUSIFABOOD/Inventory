@@ -66,5 +66,14 @@ class ReportGenerator {
     //functions to generate a report. A report contains summary of all items in the inventory, and low-stock items.
     static void generatorReport(const Inventory& inventory, const Qstring& filename);
 };
+class InventoryManager {
+    static QMap<QString, Item> items;
+public:
+    InventoryManager(){loadItems("../../database/items.csv");}
+    static void loadItems(const QString&);
+    static void saveItems();
+    static QMap<QString, Item>& getInventory();
+    static void AddItem (QString& name, QString& quantity,   QString& price,   QString& supplier, QString& category );
+};
 
 #endif // CORE_H
