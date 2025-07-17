@@ -63,6 +63,9 @@ public:
 
 class InventoryManager {
     static QMap<QString, Item> items;
+    static QMap<QString, Item> itemsByName;
+    static QMap<QString, Item> itemsByCategory;
+    static QMap<QString, Item> itemsBySupplier;
 public:
         InventoryManager(){loadItems("../database/items.csv");}
     static void loadItems(const QString&);

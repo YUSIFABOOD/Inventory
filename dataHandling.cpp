@@ -1,5 +1,5 @@
 #include "core.h"
-#include <bits/stdc++.h>
+#include <sstream>
 #include <QString>
 #include <QMessageBox>
 #include <QWidget>
@@ -154,6 +154,6 @@ void InventoryManager::saveItems()
 
 
 
-QMap<QString, Item>& InventoryManager::getInventory() {
-    return items;
-}
+
+
+QMap<QString, Item>& InventoryManager::getInventory() {return items;}

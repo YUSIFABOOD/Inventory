@@ -12,6 +12,11 @@ reportGenerator::reportGenerator(const QString& username, QWidget *parent)
     ui->setupUi(this);
 }
 
+reportGenerator::reportGenerator(QWidget *parent)
+    : QDialog(parent), ui(new Ui::reportGenerator)
+{
+    ui->setupUi(this);
+}
 reportGenerator::~reportGenerator()
 {
     delete ui;

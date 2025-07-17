@@ -1,5 +1,5 @@
 #include "core.h"
-#include <bits/stdc++.h>
+#include <sstream>
 #include <QString>
 #include <QMessageBox>
 #include <QWidget>

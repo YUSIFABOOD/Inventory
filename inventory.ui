@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>637</width>
+    <width>631</width>
     <height>435</height>
    </rect>
   </property>
@@ -16,20 +16,20 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>20</y>
      <width>81</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>search by</string>
+    <string>Search by</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="Search_Cateogry">
+  <widget class="QComboBox" name="Search_Category">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>140</x>
      <y>20</y>
      <width>82</width>
      <height>28</height>
@@ -39,14 +39,14 @@
   <widget class="QLineEdit" name="Search_bar">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>240</x>
      <y>20</y>
      <width>161</width>
      <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>Type Here</string>
+    <string/>
    </property>
   </widget>
   <widget class="QTableWidget" name="Items_Table">
@@ -54,7 +54,7 @@
     <rect>
      <x>55</x>
      <y>91</y>
-     <width>521</width>
+     <width>491</width>
      <height>251</height>
     </rect>
    </property>
@@ -65,12 +65,12 @@
    </column>
    <column>
     <property name="text">
-     <string>Quantity</string>
+     <string>Category</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Category</string>
+     <string>Quantity</string>
     </property>
    </column>
    <column>
@@ -78,18 +78,49 @@
      <string>Price</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>Supplier</string>
+    </property>
+   </column>
   </widget>
   <widget class="QPushButton" name="Add_New_Item_Button">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>100</x>
      <y>370</y>
-     <width>191</width>
+     <width>161</width>
      <height>29</height>
     </rect>
    </property>
    <property name="text">
     <string>Add New Item</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="searchButton">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>20</y>
+     <width>100</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="generateReport">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>370</y>
+     <width>171</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Generate Report</string>
    </property>
   </widget>
  </widget>

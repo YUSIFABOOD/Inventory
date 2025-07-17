@@ -17,6 +17,7 @@ class reportGenerator : public QDialog
 
 public:
     explicit reportGenerator(const QString& username, QWidget *parent = nullptr);
+    explicit reportGenerator(QWidget *parent = nullptr);
     ~reportGenerator();
 
 private slots:
