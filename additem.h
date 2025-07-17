@@ -17,6 +17,9 @@ public:
     explicit addItem(QWidget *parent = nullptr);
     ~addItem();
 
+private slots:
+    void on_add_item_button_clicked();
+
 private:
     Ui::addItem *ui;
 };

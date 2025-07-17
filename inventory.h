@@ -12,7 +12,14 @@ class Inventory;
 class Inventory : public QDialog
 {
     Q_OBJECT
-
+protected:
+    void closeEvent(QCloseEvent *event) override {
+        qDebug() << "X button clicked - saving users";
+        UserManager::saveUsers();
+        InventoryManager::saveItems();
+        event->accept();
+        QApplication::quit();  // This makes aboutToQuit work!
+    }
 public:
     explicit Inventory(QWidget *parent = nullptr);
     ~Inventory();
