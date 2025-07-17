@@ -33,10 +33,10 @@ public:
 class UserManager {
     static QMap<QString, User> usersByUsername;
 public:
-    UserManager(){usersByUsername=loadUsers("../../database/users.csv");}
+        UserManager(){loadUsers("../database/users.csv");}
     static void deleteUser(const QString& username);
     User* findUser(QMap<QString, User>&) const;
-    static QMap <QString, User> loadUsers(const QString& data);
+    static void loadUsers(const QString& data);
     static void addUser(QString, QString, QString);
     static void updateTable(QTableWidget* table);
     static QMap <QString, User> getData();
@@ -52,22 +52,26 @@ private:
     QString supplier;
 
 public:
-    Item(const QString& n, const QString& cat, int qty, double pr, const QString& supp);
-    QString getName() const;
-    QString getSupplier() const;
-    QString getPrice () const;
-    QString getQuantity () const;
+    Item() : name(""), category(""), quantity(0), price(0.0), supplier("") {}
+    Item(const QString& n, const QString& cat, int qty, double pr, const QString& supp) : name(n), category(cat), quantity(qty), price(pr), supplier(supp) {};
+    QString getName() const{return name;}
+    QString getSupplier() const{return supplier;}
+    QString getCategory ()const {return category;}
+    double getPrice () const{return price;}
+    int getQuantity () const{return quantity;}
 };
 
 class InventoryManager {
     static QMap<QString, Item> items;
 public:
-    InventoryManager(){loadItems("../../database/items.csv");}
+        InventoryManager(){loadItems("../database/items.csv");}
     static void loadItems(const QString&);
     static void saveItems();
     static QMap<QString, Item>& getInventory();
-    static void AddItem (QString& name, QString& quantity,   QString& price,   QString& supplier, QString& category );
+    static void AddItem (QString& name, QString& quantity,   QString& price,   QString& supplier, QString& category );
 };
+
+
 
 
 

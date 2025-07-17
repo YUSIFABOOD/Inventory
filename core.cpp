@@ -10,8 +10,9 @@
 #include <QRegularExpression>
 #include <QTableWidget>
 using namespace std;
-
 QMap<QString, User> UserManager::usersByUsername;
+QMap<QString, Item> InventoryManager::items;
+
 
 bool Authenticator::checkPass(QString name, QString pass, QMap<QString,User> map)
 {
@@ -25,14 +26,13 @@ bool Authenticator::checkPass(QString name, QString pass, QMap<QString,User> map
 
 QString Authenticator::login (QString name, QString pass)
 {
-    QMap <QString, User >usersByUsername = UserManager::loadUsers("../../database/users.csv");
     if(name.isEmpty()||pass.isEmpty())
     {throw std::runtime_error("Username and Password cannot be empty");}
-    if(!usersByUsername.count(name))
+    if(!UserManager::getData().count(name))
     {throw std::runtime_error("User does not exist");}
-    if(!checkPass(name, pass, usersByUsername))
+    if(!checkPass(name, pass, UserManager::getData()))
     {throw std::runtime_error("Invaild password");}
-    return (usersByUsername.find(name).value().getRole());
+    return (UserManager::getData().find(name).value().getRole());
 }
 
 
@@ -51,6 +51,7 @@ void UserManager::addUser(QString name, QString pass, QString role)
 }
 
 
+
 bool Authenticator::ValidatePass(QString& pass)
 {
     QRegularExpression letterRegex("[A-Za-z]");
@@ -64,23 +65,6 @@ void UserManager::deleteUser(const QString& name)
 
     usersByUsername.remove(name);
 }
-void InventoryManager::AddItem(QString& name, QString& quantity,   QString& price,   QString& supplier, QString& category  ){
 
-    if(name.isEmpty()||quantity.isEmpty()||price.isEmpty()|| supplier.isEmpty(), category.isEmpty() ){
-        throw runtime_error {"Error: You cannot add an empty item  "};
 
-    }
-    if (quantity.toInt()<0|| price.toInt()<0) {
-        throw runtime_error {"Only postive numbers"};
-    }
-    QString key ;
-    key = name+supplier;
-    if (items.count(key)){
-        throw runtime_error {"Item already exsit"} ;
 
-    }
- else {
-    items[key]=Item( name, category, quantity.toInt(), price.toInt(), supplier);
-
-    }
-}
