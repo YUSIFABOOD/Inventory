@@ -21,10 +21,12 @@ Inventory::~Inventory()
 void Inventory::on_Add_New_Item_Button_clicked()
 {
     addItem* additem = new addItem(this);
-    additem->show();
-    if (additem->exec() == QDialog::Accepted) {
-        InventoryManager::loadItemsIntoTable(ui->Items_Table);
-    }
+    connect(additem, &addItem::itemAdded, this, [this]() {
+    InventoryManager::loadItemsIntoTable(ui->Items_Table);
+    itemsModified = true;
+    });
+    
+    additem->show(); 
 }
 
 void Inventory::on_searchButton_clicked()
@@ -47,12 +49,7 @@ void Inventory::on_searchButton_clicked()
 
 
 
-void Inventory::on_generateReport_clicked()
-{
-    hide();
-    reportGenerator * window = new reportGenerator( this);
-    window->show();
-}
+
 
 
 void Inventory::on_backButton_clicked()
@@ -75,11 +72,13 @@ void Inventory::on_pushButton_clicked()
     QString item = ui->Items_Table->item(row, 0)->text();
     QString supplier=ui->Items_Table->item(row, 4)->text();
     try {
-        InventoryManager::deleteItem(item, supplier); // Remove from CSV
-        ui->Items_Table->removeRow(row);     // Remove from table
+        InventoryManager::deleteItem(item, supplier); 
+        ui->Items_Table->removeRow(row);    
+        itemsModified = true; 
         QMessageBox::information(this, "Success", "Item deleted successfully.");
     } catch (const std::exception& e) {
         QMessageBox::critical(this, "Error", e.what());
     }
 }
+
 

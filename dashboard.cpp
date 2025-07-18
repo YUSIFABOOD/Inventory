@@ -23,21 +23,29 @@ void Dashboard::on_InventoryButton_clicked()
 {
     hide();
     Inventory* inventory = new Inventory(this);
-    inventory->show();
+    inventory->exec();
+    if (inventory->wasModified()) {
+        updateInventoryStats(); 
+    }
+    show(); 
+    delete inventory;
 }
 
 void Dashboard::on_addItemButton_clicked()
 {
     hide();
     addItem* additem = new addItem(this);
-    additem->show();
+    additem->exec();
+    updateInventoryStats(); // Always refresh stats when returning from add item dialog
+    show();
+    delete additem;
 }
 
 
 void Dashboard::on_reportsButton_clicked()
 {
     hide();
-    reportGenerator* generate = new reportGenerator(currentUser,this);
+    reportGenerator* generate = new reportGenerator(this);
     generate->show();
 }
 
@@ -59,7 +67,7 @@ void Dashboard::updateInventoryStats() {
 
     ui->totalItemsLabel->setText("Total Items: " + QString::number(total));
     ui->lowStockLabel->setText("Low Stock Items: " + QString::number(lowStock));
-    ui->lastUpdateLabel->setText("Last Update: " + QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    ui->lastUpdateLabel->setText(InventoryManager::getLastOperation() + " at " + InventoryManager::getLastModified().toString("hh:mm:ss"));
 }
 
 

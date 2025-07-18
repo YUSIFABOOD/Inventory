@@ -62,7 +62,10 @@ public:
 };
 
 class InventoryManager {
+private:
     static QMap<QString, Item> items;
+    static QDateTime lastModified;
+    static QString lastOperation;
 public:
     InventoryManager(){loadItems("../database/items.csv");}
     static void loadItems(const QString&);
@@ -72,6 +75,8 @@ public:
     static void loadItemsIntoTable(QTableWidget *table);
     static void performSearch(const QString& type, const QString& text, QTableWidget *table);
     static void deleteItem(const QString& item, QString& supplier);
+    static QDateTime getLastModified();
+    static QString getLastOperation();
 };
 
 

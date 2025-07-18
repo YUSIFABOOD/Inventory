@@ -15,6 +15,14 @@ class reportGenerator : public QDialog
 {
     Q_OBJECT
 
+protected:
+    void closeEvent(QCloseEvent *event) override {
+        qDebug() << "X button clicked - saving users";
+        UserManager::saveUsers();
+        InventoryManager::saveItems();
+        event->accept();
+        QApplication::quit();
+    }
 public:
     explicit reportGenerator(const QString& username, QWidget *parent = nullptr);
     explicit reportGenerator(QWidget *parent = nullptr);

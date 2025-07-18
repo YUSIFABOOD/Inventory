@@ -3,13 +3,16 @@
 #include "core.h"
 #include <QMessageBox>
 #include <QDateTime>
+#include <QDebug>
 #include <fstream>
 using namespace std;
 
 reportGenerator::reportGenerator(const QString& username, QWidget *parent)
     : QDialog(parent), ui(new Ui::reportGenerator), currentUser(username)
 {
+    qDebug() << "Report generator constructor called with username:" << username;
     ui->setupUi(this);
+    qDebug() << "Report generator UI setup complete";
 }
 
 reportGenerator::reportGenerator(QWidget *parent)
@@ -75,7 +78,8 @@ void reportGenerator::on_exportButton_clicked()
 
 void reportGenerator::on_GenerateReports_Back_clicked()
 {
-    this->close();
-    if (parentWidget())
+    if (parentWidget()) {
         parentWidget()->show();
+    }
+    this->hide();
 }

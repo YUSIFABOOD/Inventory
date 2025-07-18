@@ -23,13 +23,11 @@ protected:
 public:
     explicit Inventory(QWidget *parent = nullptr);
     ~Inventory();
+    bool wasModified() const { return itemsModified; }
 private slots:
     void on_Add_New_Item_Button_clicked();
 
     void on_searchButton_clicked();
-
-
-    void on_generateReport_clicked();
 
     void on_backButton_clicked();
 
@@ -37,6 +35,7 @@ private slots:
 
 private:
     Ui::Inventory *ui;
+    bool itemsModified = false;
 };
 
 #endif // INVENTORY_H

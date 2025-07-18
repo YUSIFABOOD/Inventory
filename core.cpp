@@ -11,7 +11,6 @@
 #include <QTableWidget>
 using namespace std;
 QMap<QString, User> UserManager::usersByUsername;
-QMap<QString, Item> InventoryManager::items;
 
 
 bool Authenticator::checkPass(QString name, QString pass, QMap<QString,User> map)

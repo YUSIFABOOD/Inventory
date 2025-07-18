@@ -9,8 +9,13 @@
 #include <QDir>
 #include <QRegularExpression>
 #include <QTableWidget>
+#include <QDateTime>
 using namespace std;
 
+// Static variable definitions
+QMap<QString, Item> InventoryManager::items;
+QDateTime InventoryManager::lastModified = QDateTime::currentDateTime();
+QString InventoryManager::lastOperation = "System initialized";
 
 void UserManager::loadUsers(const QString& data) {
     ifstream file(data.toStdString());
@@ -78,19 +83,14 @@ void UserManager::saveUsers()
 void InventoryManager::AddItem(QString& name, QString& quantity,   QString& price,   QString& supplier, QString& category  ){
     QString key ;
     key = name+supplier;
-    if(name.isEmpty()||quantity.isEmpty()||price.isEmpty()|| supplier.isEmpty(), category.isEmpty() ){
-        throw runtime_error {"Error: You cannot add an empty item  "};
-
-    }
-    if (quantity.toInt()<0|| price.toInt()<0) {
-        throw runtime_error {"Only postive numbers"};
-    }
     if (items.count(key)){
         throw runtime_error {"Item already exsit"} ;
 
     }
     else {
     items[key]=Item( name, category, quantity.toInt(), price.toInt(), supplier);
+    lastModified = QDateTime::currentDateTime();
+    lastOperation = "Added item: " + name + " (" + supplier + ")"; // Record the operation
 
     }
 }
@@ -168,6 +168,13 @@ void InventoryManager::loadItemsIntoTable(QTableWidget *table) {
         table->setItem(row, 2, new QTableWidgetItem(QString::number(item.getQuantity())));
         table->setItem(row, 3, new QTableWidgetItem(QString::number(item.getPrice())));
         table->setItem(row, 4, new QTableWidgetItem(item.getSupplier()));
+        if (item.getQuantity() < 5) {
+            for (int col = 0; col < 5; ++col) {
+                table->item(row, col)->setBackground(QBrush(QColor(255, 200, 200))); // Light red background
+                table->item(row, col)->setForeground(QBrush(QColor(139, 0, 0))); // Dark red text
+            }
+        }
+        
         ++row;
     }
 }
@@ -198,6 +205,14 @@ void InventoryManager::performSearch(const QString& type, const QString& text, Q
             table->setItem(row, 2, new QTableWidgetItem(QString::number(item.getQuantity())));
             table->setItem(row, 3, new QTableWidgetItem(QString::number(item.getPrice())));
             table->setItem(row, 4, new QTableWidgetItem(item.getSupplier()));
+            
+            if (item.getQuantity() < 5) {
+                for (int col = 0; col < 5; ++col) {
+                    table->item(row, col)->setBackground(QBrush(QColor(255, 200, 200))); // Light red background
+                    table->item(row, col)->setForeground(QBrush(QColor(139, 0, 0))); // Dark red text
+                }
+            }
+            
             ++row;
             found = true;
         }
@@ -211,6 +226,16 @@ void InventoryManager::deleteItem(const QString& item, QString& supplier)
 {
     QString key = item+supplier;
     items.remove(key);
+    lastModified = QDateTime::currentDateTime();
+    lastOperation = "Deleted item: " + item + " (" + supplier + ")"; // Record the operation
 }
 
 QMap<QString, Item>& InventoryManager::getInventory() {return items;}
+
+QDateTime InventoryManager::getLastModified() {
+    return lastModified;
+}
+
+QString InventoryManager::getLastOperation() {
+    return lastOperation;
+}
