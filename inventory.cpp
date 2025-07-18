@@ -3,13 +3,11 @@
 #include "additem.h"
 #include "reportgenerator.h"
 Inventory::Inventory(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::Inventory)
+    : QDialog(parent), ui(new Ui::Inventory)
 {
     ui->setupUi(this);
-    InventoryManager::loadItems("../database/items.csv");
     ui->Search_Category->addItems({"Name", "Category", "Supplier"});
-    loadItemsIntoTable();
+    InventoryManager::loadItemsIntoTable(ui->Items_Table);
 
 }
 
@@ -18,59 +16,6 @@ Inventory::~Inventory()
     delete ui;
 }
 
-void Inventory::performSearch(const QString& type, const QString& text)
-{
-    ui->Items_Table->setRowCount(0);
-    int row = 0;
-    bool found = false;
-    QMap<QString, Item>& items = InventoryManager::getInventory();
-    for (auto it = items.begin(); it != items.end(); ++it) {
-        const Item& item = it.value();
-        bool match = false;
-
-        if (type == "Name" && item.getName().contains(text, Qt::CaseInsensitive)) {
-            match = true;
-        } else if (type == "Category" && item.getCategory().contains(text, Qt::CaseInsensitive)) {
-            match = true;
-        } else if (type == "Supplier" && item.getSupplier().contains(text, Qt::CaseInsensitive)) {
-            match = true;
-        }
-
-        if (match) {
-            ui->Items_Table->insertRow(row);
-            ui->Items_Table->setItem(row, 0, new QTableWidgetItem(item.getName()));
-            ui->Items_Table->setItem(row, 1, new QTableWidgetItem(item.getCategory()));
-            ui->Items_Table->setItem(row, 2, new QTableWidgetItem(QString::number(item.getQuantity())));
-            ui->Items_Table->setItem(row, 3, new QTableWidgetItem(QString::number(item.getPrice())));
-            ui->Items_Table->setItem(row, 4, new QTableWidgetItem(item.getSupplier()));
-            ++row;
-            found = true;
-        }
-    }
-    if (!found) {
-        QMessageBox::information(this, "No Results", "No matching items found.");
-    }
-}
-
-
-void Inventory::loadItemsIntoTable() {
-    const auto& items = InventoryManager::getInventory();
-    ui->Items_Table->setRowCount(0);
-    int row = 0;
-    ui->Items_Table->setColumnCount(5);
-    ui->Items_Table->setHorizontalHeaderLabels({"Name", "Category", "Quantity", "Price", "Supplier"});
-
-    for (auto it = items.begin(); it != items.end(); ++it) {
-        const Item& item = it.value();
-        ui->Items_Table->insertRow(row);
-        ui->Items_Table->setItem(row, 0, new QTableWidgetItem(item.getName()));
-        ui->Items_Table->setItem(row, 1, new QTableWidgetItem(item.getCategory()));
-        ui->Items_Table->setItem(row, 2, new QTableWidgetItem(QString::number(item.getQuantity())));
-        ui->Items_Table->setItem(row, 3, new QTableWidgetItem(QString::number(item.getPrice())));
-        ui->Items_Table->setItem(row, 4, new QTableWidgetItem(item.getSupplier()));
-        ++row;
-    }
-}
 
 
 void Inventory::on_Add_New_Item_Button_clicked()
@@ -78,7 +23,7 @@ void Inventory::on_Add_New_Item_Button_clicked()
     addItem* additem = new addItem(this);
     additem->show();
     if (additem->exec() == QDialog::Accepted) {
-        loadItemsIntoTable();
+        InventoryManager::loadItemsIntoTable(ui->Items_Table);
     }
 }
 
@@ -91,16 +36,15 @@ void Inventory::on_searchButton_clicked()
         QMessageBox::warning(this, "Search Error", "Please enter text to search.");
         return;
     }
-
-    performSearch(category, searchText);
-
+    try{
+    InventoryManager::performSearch(category, searchText, ui->Items_Table);
+    }
+    catch (const std::runtime_error& e)
+    {
+        QMessageBox::warning(this, "No matching result", "Search on another item");
+    }
 }
 
-
-void Inventory::on_pushButton_clicked()
-{
-
-}
 
 
 void Inventory::on_generateReport_clicked()
@@ -108,5 +52,34 @@ void Inventory::on_generateReport_clicked()
     hide();
     reportGenerator * window = new reportGenerator( this);
     window->show();
+}
+
+
+void Inventory::on_backButton_clicked()
+{
+    if (parentWidget()) {
+        parentWidget()->show();
+    }
+    this->hide();
+}
+
+
+void Inventory::on_pushButton_clicked()
+{
+    int row = ui->Items_Table->currentRow();
+    if (row < 0) {
+        QMessageBox::warning(this, "No Selection", "Please select an item to delete.");
+        return;
+    }
+
+    QString item = ui->Items_Table->item(row, 0)->text();
+    QString supplier=ui->Items_Table->item(row, 4)->text();
+    try {
+        InventoryManager::deleteItem(item, supplier); // Remove from CSV
+        ui->Items_Table->removeRow(row);     // Remove from table
+        QMessageBox::information(this, "Success", "Item deleted successfully.");
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Error", e.what());
+    }
 }
 

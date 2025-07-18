@@ -3,7 +3,7 @@
 #include "core.h"
 #include "adminpage.h"
 #include "dashboard.h"
-#include "inventory.h"
+#include "staffinventory.h"
 #include <QMessageBox>
 loginPage::loginPage(QWidget *parent)
     : QMainWindow(parent)
@@ -25,23 +25,23 @@ void loginPage::on_loginButton_clicked()
     try{
         if(name=="admin"&&pass=="admin")
         {
-            hide();
             adminpage* admin = new adminpage(this);
             admin->show();
+            this->hide();
         }
 
         else if(Authenticator::login(name, pass)=="Manager")
         {
-            hide();
             Dashboard* dashboard = new Dashboard(this);
             dashboard->setUsername(name);
             dashboard->show();
+            this->hide();
         }
         else if(Authenticator::login(name, pass)=="Staff")
         {
-            hide();
-            Inventory* inventory = new Inventory(this);
+            staffInventory* inventory = new staffInventory(this);
             inventory->show();
+            this->hide();
         }
     }
     catch (const std::runtime_error& e) {

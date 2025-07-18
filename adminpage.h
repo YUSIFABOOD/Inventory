@@ -35,8 +35,8 @@ private slots:
 
     void on_userDeleteButton_clicked();
 
-    void on_InventoryButton_clicked();
-
+    void on_Dashboard_clicked();
+\
 private:
     Ui::adminpage *ui;
 };

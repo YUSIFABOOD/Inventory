@@ -17,7 +17,8 @@ SOURCES += \
     inventory.cpp \
     main.cpp \
     loginpage.cpp \
-    reportgenerator.cpp
+    reportgenerator.cpp \
+    staffinventory.cpp
 
 HEADERS += \
     additem.h \
@@ -26,7 +27,8 @@ HEADERS += \
     dashboard.h \
     inventory.h \
     loginpage.h \
-    reportgenerator.h
+    reportgenerator.h \
+    staffinventory.h
 
 FORMS += \
     additem.ui \
@@ -34,7 +36,8 @@ FORMS += \
     dashboard.ui \
     inventory.ui \
     loginpage.ui \
-    reportgenerator.ui
+    reportgenerator.ui \
+    staffinventory.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

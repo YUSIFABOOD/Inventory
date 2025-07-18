@@ -4,6 +4,8 @@
 #include "loginpage.h"
 #include "dashboard.h"
 #include "inventory.h"
+#include "additem.h"
+#include "reportgenerator.h"
 #include <QMessageBox>
 adminpage::adminpage(QWidget *parent)
     : QDialog(parent)
@@ -63,9 +65,16 @@ void adminpage::on_userDeleteButton_clicked()
 }
 
 
-void adminpage::on_InventoryButton_clicked()
+
+
+void adminpage::on_Dashboard_clicked()
 {
-    Inventory* inventory = new Inventory;
-    inventory->show();
+    Dashboard* dashboard = new Dashboard(this);
+    dashboard->setUsername("admin");
+    dashboard->show();
+    this->hide();
 }
+
+
+
 

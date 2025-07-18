@@ -153,7 +153,64 @@ void InventoryManager::saveItems()
 }
 
 
+void InventoryManager::loadItemsIntoTable(QTableWidget *table) {
+    const auto& items = InventoryManager::getInventory();
+    table->setRowCount(0);
+    int row = 0;
+    table->setColumnCount(5);
+    table->setHorizontalHeaderLabels({"Name", "Category", "Quantity", "Price", "Supplier"});
+
+    for (auto it = items.begin(); it != items.end(); ++it) {
+        const Item& item = it.value();
+        table->insertRow(row);
+        table->setItem(row, 0, new QTableWidgetItem(item.getName()));
+        table->setItem(row, 1, new QTableWidgetItem(item.getCategory()));
+        table->setItem(row, 2, new QTableWidgetItem(QString::number(item.getQuantity())));
+        table->setItem(row, 3, new QTableWidgetItem(QString::number(item.getPrice())));
+        table->setItem(row, 4, new QTableWidgetItem(item.getSupplier()));
+        ++row;
+    }
+}
 
 
+void InventoryManager::performSearch(const QString& type, const QString& text, QTableWidget *table)
+{
+    table->setRowCount(0);
+    int row = 0;
+    bool found = false;
+    QMap<QString, Item>& items = InventoryManager::getInventory();
+    for (auto it = items.begin(); it != items.end(); ++it) {
+        const Item& item = it.value();
+        bool match = false;
+
+        if (type == "Name" && item.getName().contains(text, Qt::CaseInsensitive)) {
+            match = true;
+        } else if (type == "Category" && item.getCategory().contains(text, Qt::CaseInsensitive)) {
+            match = true;
+        } else if (type == "Supplier" && item.getSupplier().contains(text, Qt::CaseInsensitive)) {
+            match = true;
+        }
+
+        if (match) {
+            table->insertRow(row);
+            table->setItem(row, 0, new QTableWidgetItem(item.getName()));
+            table->setItem(row, 1, new QTableWidgetItem(item.getCategory()));
+            table->setItem(row, 2, new QTableWidgetItem(QString::number(item.getQuantity())));
+            table->setItem(row, 3, new QTableWidgetItem(QString::number(item.getPrice())));
+            table->setItem(row, 4, new QTableWidgetItem(item.getSupplier()));
+            ++row;
+            found = true;
+        }
+    }
+    if (!found) {
+        throw runtime_error("No matching result");
+    }
+}
+
+void InventoryManager::deleteItem(const QString& item, QString& supplier)
+{
+    QString key = item+supplier;
+    items.remove(key);
+}
 
 QMap<QString, Item>& InventoryManager::getInventory() {return items;}

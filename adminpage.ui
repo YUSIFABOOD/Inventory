@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>552</width>
-    <height>500</height>
+    <height>457</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -154,50 +154,11 @@
     <string>Role</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="InventoryButton">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>450</y>
-     <width>81</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Inventory</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="AddItemButton">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>450</y>
-     <width>81</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add Items</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="ReportsButton">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>450</y>
-     <width>121</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Generate Report</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="Dashboard">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>450</y>
+     <x>250</x>
+     <y>50</y>
      <width>91</width>
      <height>26</height>
     </rect>

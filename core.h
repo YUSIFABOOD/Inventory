@@ -63,15 +63,15 @@ public:
 
 class InventoryManager {
     static QMap<QString, Item> items;
-    static QMap<QString, Item> itemsByName;
-    static QMap<QString, Item> itemsByCategory;
-    static QMap<QString, Item> itemsBySupplier;
 public:
-        InventoryManager(){loadItems("../database/items.csv");}
+    InventoryManager(){loadItems("../database/items.csv");}
     static void loadItems(const QString&);
     static void saveItems();
     static QMap<QString, Item>& getInventory();
     static void AddItem (QString& name, QString& quantity,   QString& price,   QString& supplier, QString& category );
+    static void loadItemsIntoTable(QTableWidget *table);
+    static void performSearch(const QString& type, const QString& text, QTableWidget *table);
+    static void deleteItem(const QString& item, QString& supplier);
 };
 
 

@@ -16,10 +16,10 @@ class addItem : public QDialog
 public:
     explicit addItem(QWidget *parent = nullptr);
     ~addItem();
-
+    bool CheckNumbers(QString& n);
 private slots:
     void on_add_item_button_clicked();
-
+    void on_backButton_clicked();
 private:
     Ui::addItem *ui;
 };

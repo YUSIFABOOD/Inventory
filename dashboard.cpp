@@ -28,6 +28,7 @@ void Dashboard::on_InventoryButton_clicked()
 
 void Dashboard::on_addItemButton_clicked()
 {
+    hide();
     addItem* additem = new addItem(this);
     additem->show();
 }
@@ -35,6 +36,7 @@ void Dashboard::on_addItemButton_clicked()
 
 void Dashboard::on_reportsButton_clicked()
 {
+    hide();
     reportGenerator* generate = new reportGenerator(currentUser,this);
     generate->show();
 }
@@ -68,3 +70,14 @@ void Dashboard::on_pushButton_clicked()
     loginPage* login = new loginPage(this);
     login->show();
 }
+
+
+
+void Dashboard::on_backButton_clicked()
+{
+    if (parentWidget()) {
+        parentWidget()->show();
+    }
+    this->hide();
+}
+
