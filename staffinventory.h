@@ -27,6 +27,7 @@ public:
     ~staffInventory();
     void performSearch(const QString& type, const QString& text);
     void loadItemsIntoTable();
+    void setUsername(const QString &username);
 private slots:
     void on_generateReport_clicked();
     void on_searchButton_clicked();
@@ -34,6 +35,7 @@ private slots:
 
 private:
     Ui::staffInventory *ui;
+    QString currentUser;
 };
 
 #endif // STAFFINVENTORY_H

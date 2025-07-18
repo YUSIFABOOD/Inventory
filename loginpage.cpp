@@ -40,6 +40,7 @@ void loginPage::on_loginButton_clicked()
         else if(Authenticator::login(name, pass)=="Staff")
         {
             staffInventory* inventory = new staffInventory(this);
+            inventory->setUsername(name);
             inventory->show();
             this->hide();
         }

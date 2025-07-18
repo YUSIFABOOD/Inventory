@@ -20,7 +20,7 @@ staffInventory::~staffInventory()
 void staffInventory::on_generateReport_clicked()
 {
     hide();
-    reportGenerator * window = new reportGenerator( this);
+    reportGenerator * window = new reportGenerator(currentUser, this);
     window->show();
 }
 
@@ -52,3 +52,7 @@ void staffInventory::on_backButton_clicked()
     this->hide();
 }
 
+void staffInventory::setUsername(const QString &username)
+{
+    currentUser = username;
+}

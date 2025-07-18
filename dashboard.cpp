@@ -45,8 +45,8 @@ void Dashboard::on_addItemButton_clicked()
 void Dashboard::on_reportsButton_clicked()
 {
     hide();
-    reportGenerator* generate = new reportGenerator(this);
-    generate->show();
+    reportGenerator * window = new reportGenerator(currentUser,this);
+    window->show();
 }
 
 void Dashboard::setUsername(const QString &username)
