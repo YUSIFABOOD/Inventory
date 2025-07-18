@@ -11,16 +11,31 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Inventory</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f4f6f9;   /* Soft light gray */
+    color: #212529;              /* Neutral dark text */
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 13px;
+}
+</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>40</x>
      <y>20</y>
-     <width>81</width>
-     <height>20</height>
+     <width>111</width>
+     <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Search by</string>
@@ -29,21 +44,33 @@
   <widget class="QComboBox" name="Search_Category">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>150</x>
      <y>20</y>
-     <width>82</width>
+     <width>101</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="Search_bar">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>260</x>
      <y>20</y>
-     <width>161</width>
+     <width>201</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -57,6 +84,44 @@
      <width>501</width>
      <height>251</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTableWidget {
+    background-color: #f8f9fa;           /* Light background */
+    gridline-color: #dee2e6;             /* Soft grid lines */
+    border: 1px solid #dee2e6;           /* Light outer border */
+    font: 13px &quot;Segoe UI&quot;, sans-serif;  /* Modern font */
+    selection-background-color: #007BFF; /* Blue highlight */
+    selection-color: white;              /* White text on selection */
+    alternate-background-color: #eef1f4; /* Alternate row color */
+}
+
+QHeaderView::section {
+    background-color: #343a40;           /* Dark header background */
+    color: white;                        /* White header text */
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    font-weight: bold;
+}
+
+QTableWidget::item {
+    padding: 6px;
+}
+
+QTableWidget::item:selected {
+    background-color: #007BFF;           /* Blue highlight */
+    color: white;
+}
+
+QTableCornerButton::section {
+    background-color: #343a40;           /* Match header color */
+    border: 1px solid #dee2e6;
+}
+
+QTableWidget::item:hover {
+    background-color: #e2e6ea;           /* Slight hover effect */
+}
+</string>
    </property>
    <column>
     <property name="text">
@@ -87,11 +152,37 @@
   <widget class="QPushButton" name="searchButton">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>470</x>
      <y>20</y>
      <width>100</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#searchButton {
+  background-color: #fd7e14;    /* Bootstrap orange */
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d4630d;        /* Darker orange border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#searchButton:hover {
+  background-color: #d4630d;
+}
+QPushButton#searchButton:pressed {
+  background-color: #a64c08;
+}
+</string>
    </property>
    <property name="text">
     <string>Search</string>
@@ -100,14 +191,79 @@
   <widget class="QPushButton" name="generateReport">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>120</x>
      <y>370</y>
      <width>131</width>
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#generateReport {
+  background-color: #6610f2;    /* Modern purple (Bootstrap indigo) */
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #520dc2;        /* Darker purple border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#generateReport:hover {
+  background-color: #520dc2;
+}
+QPushButton#generateReport:pressed {
+  background-color: #3d0a91;
+}
+</string>
+   </property>
    <property name="text">
-    <string>Generate Report</string>
+    <string>Report</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backButton">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>370</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#backButton {
+  background-color: #FFC107;    /* Bootstrap warning yellow */
+  color: black;                 /* Dark text for contrast */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e0a800;        /* Slightly darker yellow border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#backButton:hover {
+  background-color: #e0a800;    /* Darker on hover */
+}
+QPushButton#backButton:pressed {
+  background-color: #c69500;    /* Even darker when pressed */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Back</string>
    </property>
   </widget>
  </widget>

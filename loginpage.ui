@@ -6,57 +6,78 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>329</width>
-    <height>403</height>
+    <width>417</width>
+    <height>369</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>loginPage</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+    background-color: #f4f6f9;   /* Soft light gray */
+    color: #212529;              /* Neutral dark text */
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 13px;
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>81</width>
+      <x>30</x>
+      <y>160</y>
+      <width>101</width>
       <height>19</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Mono PS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>Username:</string>
+     <string>Username</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>170</y>
-      <width>81</width>
-      <height>19</height>
+      <x>30</x>
+      <y>219</y>
+      <width>121</width>
+      <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Mono PS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>Password:</string>
+     <string>Password</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="usernameBox">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>100</y>
-      <width>171</width>
-      <height>27</height>
+      <x>130</x>
+      <y>160</y>
+      <width>221</width>
+      <height>31</height>
      </rect>
     </property>
    </widget>
    <widget class="QLineEdit" name="passwordBox">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>170</y>
-      <width>171</width>
-      <height>27</height>
+      <x>130</x>
+      <y>220</y>
+      <width>221</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="echoMode">
@@ -68,9 +89,22 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>81</width>
-      <height>19</height>
+      <width>271</width>
+      <height>61</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Mono PS</family>
+      <pointsize>41</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Welcome!</string>
@@ -79,14 +113,62 @@
    <widget class="QPushButton" name="loginButton">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>140</x>
       <y>280</y>
       <width>96</width>
-      <height>27</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Mono PS</family>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#loginButton {
+  background-color: #007BFF;    /* Bootstrap’s primary blue */
+  color: white;                 /* White text */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0056b3;        /* Slightly darker blue border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#loginButton:hover {
+  background-color: #0056b3;    /* Darker on hover */
+}
+QPushButton#loginButton:pressed {
+  background-color: #004085;    /* Even darker when pressed */
+}
+</string>
     </property>
     <property name="text">
      <string>Log in</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>401</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nimbus Mono PS</family>
+      <pointsize>17</pointsize>
+      <italic>true</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Enter your credentials:</string>
     </property>
    </widget>
   </widget>
@@ -95,8 +177,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>329</width>
-     <height>23</height>
+     <width>417</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>

@@ -43,3 +43,12 @@ void staffInventory::on_searchButton_clicked()
     }
 }
 
+
+void staffInventory::on_backButton_clicked()
+{
+    if (parentWidget()) {
+        parentWidget()->show();
+    }
+    this->hide();
+}
+

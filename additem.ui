@@ -13,6 +13,15 @@
   <property name="windowTitle">
    <string>Add Item</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f4f6f9;   /* Soft light gray */
+    color: #212529;              /* Neutral dark text */
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 13px;
+}
+</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -21,6 +30,13 @@
      <width>349</width>
      <height>48</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Add Item Page</string>
@@ -35,19 +51,44 @@
      <height>281</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <layout class="QFormLayout" name="formLayout">
     <item row="0" column="0">
      <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Item name</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="item_name"/>
+     <widget class="QLineEdit" name="item_name">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Category</string>
       </property>
@@ -55,43 +96,115 @@
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Quantity</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="item_quantity"/>
+     <widget class="QLineEdit" name="item_quantity">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="label_5">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Price</string>
       </property>
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QLineEdit" name="item_price"/>
+     <widget class="QLineEdit" name="item_price">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="4" column="0">
      <widget class="QLabel" name="label_6">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Supplier</string>
       </property>
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QLineEdit" name="supplier_name"/>
+     <widget class="QLineEdit" name="supplier_name">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="5" column="1">
      <widget class="QPushButton" name="add_item_button">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#add_item_button {
+  background-color: #28a745;    /* Bootstrap success green */
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #1e7e34;        /* Slightly darker green border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#add_item_button:hover {
+  background-color: #1e7e34;
+}
+QPushButton#add_item_button:pressed {
+  background-color: #155d27;
+}
+</string>
+      </property>
       <property name="text">
        <string>Add Item</string>
       </property>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="category"/>
+     <widget class="QLineEdit" name="category">
+      <property name="font">
+       <font>
+        <family>Nimbus Mono PS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -103,6 +216,32 @@
      <width>86</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#backButton {
+  background-color: #FFC107;    /* Bootstrap warning yellow */
+  color: black;                 /* Dark text for contrast */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e0a800;        /* Slightly darker yellow border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#backButton:hover {
+  background-color: #e0a800;    /* Darker on hover */
+}
+QPushButton#backButton:pressed {
+  background-color: #c69500;    /* Even darker when pressed */
+}
+</string>
    </property>
    <property name="text">
     <string>Back</string>

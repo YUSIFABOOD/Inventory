@@ -13,19 +13,15 @@
   <property name="windowTitle">
    <string>Admin page</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>0</y>
-     <width>91</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Admin Page</string>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f4f6f9;   /* Soft light gray */
+    color: #212529;              /* Neutral dark text */
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 13px;
+}
+</string>
+  </property>
   <widget class="QLineEdit" name="addNameBox">
    <property name="geometry">
     <rect>
@@ -34,6 +30,12 @@
      <width>131</width>
      <height>27</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLineEdit" name="addPassBox">
@@ -45,15 +47,47 @@
      <height>27</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QPushButton" name="addUserButton">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>390</x>
      <y>320</y>
-     <width>96</width>
+     <width>141</width>
      <height>27</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#addUserButton {
+  background-color: #007BFF;    /* Bootstrap’s primary blue */
+  color: white;                 /* White text */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0056b3;        /* Slightly darker blue border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#addUserButton:hover {
+  background-color: #0056b3;    /* Darker on hover */
+}
+QPushButton#addUserButton:pressed {
+  background-color: #004085;    /* Even darker when pressed */
+}
+</string>
    </property>
    <property name="text">
     <string>Add user</string>
@@ -64,9 +98,15 @@
     <rect>
      <x>390</x>
      <y>170</y>
-     <width>70</width>
+     <width>101</width>
      <height>19</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Password</string>
@@ -77,9 +117,15 @@
     <rect>
      <x>390</x>
      <y>90</y>
-     <width>81</width>
+     <width>101</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Username</string>
@@ -94,6 +140,44 @@
      <height>341</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QTableWidget {
+    background-color: #f8f9fa;           /* Light background */
+    gridline-color: #dee2e6;             /* Soft grid lines */
+    border: 1px solid #dee2e6;           /* Light outer border */
+    font: 13px &quot;Segoe UI&quot;, sans-serif;   /* Modern font */
+    selection-background-color: #007BFF; /* Blue highlight */
+    selection-color: white;              /* White text on selection */
+    alternate-background-color: #eef1f4; /* Alternate row color */
+}
+
+QHeaderView::section {
+    background-color: #343a40;           /* Dark header background */
+    color: white;                        /* White header text */
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    font-weight: bold;
+}
+
+QTableWidget::item {
+    padding: 6px;
+}
+
+QTableWidget::item:selected {
+    background-color: #007BFF;           /* Blue highlight */
+    color: white;
+}
+
+QTableCornerButton::section {
+    background-color: #343a40;           /* Match header color */
+    border: 1px solid #dee2e6;
+}
+
+QTableWidget::item:hover {
+    background-color: #e2e6ea;           /* Slight hover effect */
+}
+</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="adminBack">
    <property name="geometry">
@@ -104,6 +188,32 @@
      <height>27</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#adminBack {
+  background-color: #FFC107;    /* Bootstrap warning yellow */
+  color: black;                 /* Dark text for contrast */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e0a800;        /* Slightly darker yellow border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#adminBack:hover {
+  background-color: #e0a800;    /* Darker on hover */
+}
+QPushButton#adminBack:pressed {
+  background-color: #c69500;    /* Even darker when pressed */
+}
+</string>
+   </property>
    <property name="text">
     <string>Back</string>
    </property>
@@ -111,11 +221,37 @@
   <widget class="QPushButton" name="userDeleteButton">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>390</x>
      <y>370</y>
-     <width>96</width>
+     <width>141</width>
      <height>27</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>13</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#userDeleteButton {
+  background-color: #DC3545;    /* Bootstrap’s danger red */
+  color: white;                 /* White text */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #b52a37;        /* Slightly darker red border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#userDeleteButton:hover {
+  background-color: #b52a37;    /* Darker on hover */
+}
+QPushButton#userDeleteButton:pressed {
+  background-color: #891f2a;    /* Even darker when pressed */
+}
+</string>
    </property>
    <property name="text">
     <string>Delete user</string>
@@ -124,11 +260,17 @@
   <widget class="QComboBox" name="roleBox">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>390</x>
      <y>270</y>
-     <width>91</width>
+     <width>141</width>
      <height>27</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <item>
     <property name="text">
@@ -144,11 +286,17 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>390</x>
      <y>240</y>
      <width>70</width>
      <height>19</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Role</string>
@@ -157,11 +305,37 @@
   <widget class="QPushButton" name="Dashboard">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>220</x>
      <y>50</y>
-     <width>91</width>
+     <width>121</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>13</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#Dashboard {
+  background-color: #007BFF;    /* Bootstrap’s primary blue */
+  color: white;                 /* White text */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0056b3;        /* Slightly darker blue border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#addUserButton:Dashboard {
+  background-color: #0056b3;    /* Darker on hover */
+}
+QPushButton#addUserButton:Dashboard {
+  background-color: #004085;    /* Even darker when pressed */
+}
+</string>
    </property>
    <property name="text">
     <string>Dashboard</string>

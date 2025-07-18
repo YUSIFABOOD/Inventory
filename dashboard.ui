@@ -6,18 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>752</width>
+    <width>613</width>
     <height>443</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>752</width>
+    <width>600</width>
     <height>443</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Dashboard</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #f4f6f9;   /* Soft light gray */
+    color: #212529;              /* Neutral dark text */
+    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 13px;
+}
+</string>
   </property>
   <widget class="QLabel" name="welcome_label">
    <property name="geometry">
@@ -27,6 +36,13 @@
      <width>400</width>
      <height>30</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>17</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Welcome, </string>
@@ -44,6 +60,12 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Total Items: 0</string>
    </property>
@@ -56,6 +78,12 @@
      <width>300</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Low Stock Items: 0</string>
@@ -70,6 +98,12 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Last Update: N/A</string>
    </property>
@@ -77,11 +111,37 @@
   <widget class="QPushButton" name="InventoryButton">
    <property name="geometry">
     <rect>
-     <x>59</x>
+     <x>50</x>
      <y>350</y>
-     <width>111</width>
+     <width>181</width>
      <height>29</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#InventoryButton {
+  background-color: #20c997;    /* Modern teal (Bootstrap teal) */
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #199d76;        /* Slightly darker border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#InventoryButton:hover {
+  background-color: #199d76;
+}
+QPushButton#InventoryButton:pressed {
+  background-color: #157f62;
+}
+</string>
    </property>
    <property name="text">
     <string>Inventory Logs</string>
@@ -90,11 +150,37 @@
   <widget class="QPushButton" name="addItemButton">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>290</x>
      <y>350</y>
-     <width>90</width>
+     <width>131</width>
      <height>29</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#addItemButton {
+  background-color: #007BFF;    /* Bootstrap’s primary blue */
+  color: white;                 /* White text */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0056b3;        /* Slightly darker blue border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#addItemButton:hover {
+  background-color: #0056b3;    /* Darker on hover */
+}
+QPushButton#addItemButton:pressed {
+  background-color: #004085;    /* Even darker when pressed */
+}
+</string>
    </property>
    <property name="text">
     <string>Add Items</string>
@@ -103,27 +189,79 @@
   <widget class="QPushButton" name="reportsButton">
    <property name="geometry">
     <rect>
-     <x>540</x>
+     <x>470</x>
      <y>350</y>
-     <width>141</width>
-     <height>29</height>
+     <width>111</width>
+     <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#reportsButton {
+  background-color: #6610f2;    /* Modern purple (Bootstrap indigo) */
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #520dc2;        /* Darker purple border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#reportsButton:hover {
+  background-color: #520dc2;
+}
+QPushButton#reportsButton:pressed {
+  background-color: #3d0a91;
+}
+</string>
+   </property>
    <property name="text">
-    <string>Generate Reports</string>
+    <string>Reports</string>
    </property>
   </widget>
   <widget class="QPushButton" name="backButton">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>490</x>
      <y>20</y>
      <width>90</width>
      <height>29</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Nimbus Mono PS</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#backButton {
+  background-color: #FFC107;    /* Bootstrap warning yellow */
+  color: black;                 /* Dark text for contrast */
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e0a800;        /* Slightly darker yellow border */
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+QPushButton#backButton:hover {
+  background-color: #e0a800;    /* Darker on hover */
+}
+QPushButton#backButton:pressed {
+  background-color: #c69500;    /* Even darker when pressed */
+}
+</string>
+   </property>
    <property name="text">
-    <string>back </string>
+    <string>Back </string>
    </property>
   </widget>
  </widget>

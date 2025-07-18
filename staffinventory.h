@@ -19,6 +19,8 @@ public:
 private slots:
     void on_generateReport_clicked();
     void on_searchButton_clicked();
+    void on_backButton_clicked();
+
 private:
     Ui::staffInventory *ui;
 };
