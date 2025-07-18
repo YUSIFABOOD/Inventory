@@ -45,6 +45,8 @@ void UserManager::addUser(QString name, QString pass, QString role)
     {throw std::runtime_error("User already exists");}
     if(!Authenticator::ValidatePass(pass))
     {throw std::runtime_error("Password should consist of characters and numbers");}
+    if(pass.length()<8)
+    {throw std::runtime_error("Password must be 8 characters or more");}
     else
     {usersByUsername[name]=User(name, pass, role);}
 }
